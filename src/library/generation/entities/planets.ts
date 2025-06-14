@@ -3,18 +3,10 @@ import { glow } from "../../ecs/components/glow"
 import { entity } from "../../entity"
 import { math } from "../../math/random"
 import { rect, Rect } from "../../physics/rect"
-import { vec2, Vector2 } from "../../physics/vector"
+import { vec2 } from "../../physics/vector"
 import { sprites } from "../../sprites"
 import { stats } from "../../stats"
 import { color } from "../../visual/color"
-import { shapes } from "../shapes"
-
-type Planet = {
-	radius: number,
-	points: Vector2[],
-	dimensions: Vector2,
-	translation: Vector2,
-}
 
 export function makePlanet(bounds: Rect, scaleFactor?: number) {
 

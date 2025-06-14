@@ -1,16 +1,11 @@
 import { entity } from "../../entity"
-import { shapes } from "../shapes"
 import { math } from "../../math/random"
 import { Rect, rect } from "../../physics/rect"
 import { vec2, Vector2 } from "../../physics/vector"
 import { sprites } from "../../sprites"
 import { color } from "../../visual/color"
 
-
-// TODO: Fix this
-
-export function makeAsteroid(within: Rect, maxRoughness: number, speed: Vector2) {
-	const roughness = math.rnd(1, maxRoughness)
+export function makeAsteroid(within: Rect, speed: Vector2) {
 	const scale = vec2.scale(vec2.unit(), math.rnd(40, 100))
 
 	const rl = math.rnd(1, 4)
@@ -29,6 +24,6 @@ export function makeAsteroid(within: Rect, maxRoughness: number, speed: Vector2)
 
 export function makeAsteroids(within: Rect, count: number) {
 	for (let i = 0; i < count; i++) {
-		makeAsteroid(within, 5, vec2.make(10, 0))
+		makeAsteroid(within, vec2.make(10, 0))
 	}
 }

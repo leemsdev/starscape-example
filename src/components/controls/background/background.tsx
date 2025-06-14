@@ -2,7 +2,6 @@ import { useSimConfig } from "../../../context/config.ctx"
 import { BGLayer } from "../../../library/config"
 import ColorPicker from "../../foundations/color/color-picker"
 import Panel from "../../foundations/panel/panel"
-import Slider from "../../foundations/slider"
 import NumberInput from "../../input/number-input"
 
 function useBackgroundConfig() {

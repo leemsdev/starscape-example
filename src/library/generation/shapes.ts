@@ -106,7 +106,7 @@ function wave(pcount: number, freq: number, height: number): Vector2[] {
 	// Height needs to be smaller than one. Rather than require that in the arg
 	// we can just do the calc here
 
-	if (height == 0) {
+	if (height === 0) {
 		// this is invalid
 		return []
 	}

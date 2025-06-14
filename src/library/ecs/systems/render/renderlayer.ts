@@ -2,13 +2,9 @@ import { ecs } from '../..';
 
 import * as render from './render'
 import * as effects from './effects'
-import { stats } from '../../../stats';
 
 export function run() {
 	const layers = ecs.get().renderLayers
-
-	let renderCalls = 0
-
 
 	for (const l of layers) {
 		l.forEach((e) => {
@@ -22,12 +18,8 @@ export function run() {
 
 			effects.run(e)
 			render.run(e)
-
-
-
-			renderCalls++
 		})
 	}
 
-	stats.setRenderCalls(renderCalls)
+	//stats.setRenderCalls(renderCalls)
 }

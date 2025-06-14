@@ -3,7 +3,7 @@ import { ecs, Entity } from "../..";
 import { localTransform } from "../../../math/localTransform";
 import { Rect } from "../../../physics/rect";
 import { vec2 } from "../../../physics/vector";
-import { Color, color } from "../../../visual/color";
+import { color } from "../../../visual/color";
 
 const noiseMap = new Image()
 noiseMap.src = "img/noisemaps/noise_map_5.png"
@@ -13,10 +13,8 @@ shadowMap.src = "img/noisemaps/shadowmap.png"
 
 const drawBounds = false
 
-let mvamt = 0
 
 function drawNoiseMap(img: HTMLImageElement, ctx: CanvasRenderingContext2D, r: Rect) {
-	mvamt += 0.01;
 	ctx.clip()
 	ctx.beginPath()
 	ctx.globalAlpha = 0.5
@@ -30,30 +28,6 @@ function drawNoiseMap(img: HTMLImageElement, ctx: CanvasRenderingContext2D, r: R
 
 }
 
-function drawGradient(ctx: CanvasRenderingContext2D, bounds: Rect, drawColor: Color) {
-	const gradient = ctx.createRadialGradient(bounds.pos.x, bounds.pos.y, bounds.width / 2, bounds.pos.x, bounds.pos.y, bounds.width);
-
-	const c1 = drawColor
-	const c2 = color.darken(drawColor, 0.2)
-
-	c2.a = 0.7
-	c1.a = 0.1
-
-
-	// Add three color stops
-	gradient.addColorStop(0, color.rgba(c1));
-	gradient.addColorStop(1, color.rgba(c2));
-
-	// Set the fill style and draw a rectangle
-	ctx.fillStyle = gradient;
-
-	ctx.fill()
-
-}
-
-// TODO: Move calculations out of here into either maths or physics file
-// TODO: Create multiple render steps which work on render layers ( basically we run a render function for each layer, and it allows us to draw elements on top of
-// other elements) - because we don't want to see stars rendered in front of planets
 export function run(entity: Entity) {
 
 	const sprite = ecs.get().sprites.get(entity)
@@ -125,7 +99,4 @@ export function run(entity: Entity) {
 		ctx.stroke()
 		ctx.closePath()
 	}
-
-
-
 }
