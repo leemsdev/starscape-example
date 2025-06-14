@@ -26,8 +26,6 @@ function setup(canvasId: string) {
 		throw new Error("Couldnt get canvas context")
 	}
 
-	const vp = rect.make(vec2.zero(), canvas.width, canvas.height)
-
 	_app = {
 		ctx,
 		canvas,

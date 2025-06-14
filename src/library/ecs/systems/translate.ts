@@ -1,5 +1,5 @@
 import { App } from "../../app";
-import { ecs, ECS, Entity } from "..";
+import { ecs, Entity } from "..";
 import { entity } from "../../entity";
 import { transformations } from "../../math/transformations";
 import { vec2 } from "../../physics/vector";

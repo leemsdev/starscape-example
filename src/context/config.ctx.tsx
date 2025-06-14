@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useEffect, useState } from "react";
+import React, { ReactNode, useCallback, useContext, useEffect, useState } from "react";
 import { runSim } from "../library";
 import { SimConfig } from "../library/config";
 
@@ -40,9 +40,9 @@ export default function ConfigProvider({ children, canvasId }: { children: React
 		}
 	}, [])
 
-	function applyConfig() {
+	const applyConfig = useCallback(() => {
 		runSim(collect())
-	}
+	}, [])
 
 	function update(updates: Partial<SimConfig>) {
 		const updatedConfig = {

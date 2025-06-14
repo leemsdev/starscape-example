@@ -6,13 +6,13 @@ import { useSimConfig } from "../../context/config.ctx";
 import "./configuration.css"
 
 export default function Configuration() {
-	const config = useSimConfig()
+	const { applyConfig } = useSimConfig()
 
 	useEffect(() => {
 		document.addEventListener("keypress", e => {
-			if (e.key == ' ') config.applyConfig()
+			if (e.key === ' ') applyConfig()
 		})
-	}, [])
+	}, [applyConfig])
 
 	return (
 		<section className="config">

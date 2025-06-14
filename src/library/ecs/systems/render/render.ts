@@ -76,7 +76,7 @@ export function run(entity: Entity) {
 	}
 
 
-	if (sprite.drawMode == 'stroke') {
+	if (sprite.drawMode === 'stroke') {
 		ctx.strokeStyle = color.rgba(col)
 		ctx.stroke()
 	} else {
