@@ -42,7 +42,7 @@ export default function ConfigProvider({ children, canvasId }: { children: React
 
 	const applyConfig = useCallback(() => {
 		runSim(collect())
-	}, [])
+	}, [collect])
 
 	function update(updates: Partial<SimConfig>) {
 		const updatedConfig = {
