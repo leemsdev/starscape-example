@@ -1,0 +1,35 @@
+input {
+	background-color: transparent;
+	color: white;
+	outline: none;
+	border: none;
+	background-color: rgba(15, 15, 15, 1);
+	padding: 8px;
+	border-radius: 5px;
+	appearance: textfield;
+	-webkit-appearance: textfield;
+
+}
+
+.controls {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+label {
+	display: flex;
+	flex-direction: row;
+	gap: 12px;
+	align-items: center;
+	justify-content: space-between;
+
+}
+
+.column {
+	flex: 1;
+}
+
+.picker {
+	width: 100%
+}

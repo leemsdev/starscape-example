@@ -1,0 +1,10 @@
+.config {
+	width: 550px;
+	overflow: scroll;
+	display: flex;
+	gap: 8;
+	background: #000000;
+	background: linear-gradient(180deg, rgba(5, 5, 5, 1) 0%, rgba(10, 10, 10, 1) 100%);
+	border-right: 5px solid black;
+	padding: 12px;
+}

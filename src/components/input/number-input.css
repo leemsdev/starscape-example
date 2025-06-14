@@ -1,0 +1,29 @@
+label {
+	display: flex;
+	flex-direction: row;
+	gap: 12px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.column {
+	flex: 1;
+}
+
+input {
+	background-color: transparent;
+	color: rgba(190, 190, 190, 1);
+	outline: none;
+	border: none;
+	background-color: rgba(10, 10, 10, 1);
+	padding: 8px;
+	border-radius: 5px;
+	appearance: textfield;
+	-webkit-appearance: textfield;
+	width: 100%;
+}
+
+.controls {
+	display: flex;
+	align-items: center;
+}
