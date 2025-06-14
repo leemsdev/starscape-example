@@ -40,6 +40,12 @@ export default function ConfigProvider({ children, canvasId }: { children: React
 		}
 	}, [])
 
+	const collect = useCallback(() => {
+		const strconf = window.localStorage.getItem("SimConfig")
+
+		return strconf ? JSON.parse(strconf) : config
+	}, [config])
+
 	const applyConfig = useCallback(() => {
 		runSim(collect())
 	}, [collect])
@@ -55,11 +61,6 @@ export default function ConfigProvider({ children, canvasId }: { children: React
 		window.localStorage.setItem("SimConfig", JSON.stringify(updatedConfig))
 	}
 
-	function collect() {
-		const strconf = window.localStorage.getItem("SimConfig")
-
-		return strconf ? JSON.parse(strconf) : config
-	}
 
 	return (
 		<ConfigContext.Provider value={{ config, update, collect, applyConfig }}>
