@@ -20,10 +20,8 @@ const loadNoiseMaps = (): HTMLImageElement[] => {
 
 const noisemaps = loadNoiseMaps()
 
-// TODO: Make this planet specific. Sort images folder too.
-// TODO: Also out of bounds checking
 function randomImage(): HTMLImageElement {
-    const i = math.rnd(0, 9)
+    const i = math.rnd(0, num_maps)
 
     return noisemaps[i]
 }

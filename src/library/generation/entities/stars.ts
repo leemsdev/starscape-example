@@ -111,15 +111,11 @@ export function makeNClustersWithin(area: Rect, n: number) {
         makeCluster(c3)
         makeCluster(c4)
         makeCluster(c5)
-
-        numCreated += 5;
     }
 
     for (let i = 0; i < remainder; i++) {
-
         const c1 = rect.randomRectInside(area)
         makeCluster(c1)
-        numCreated++;
     }
 }
 
