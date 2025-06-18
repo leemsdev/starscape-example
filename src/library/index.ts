@@ -7,52 +7,62 @@ import { makePlanetsWithin } from "./generation/entities/planets";
 import { makeNClustersWithin } from "./generation/entities/stars";
 import { noise } from "./generation/noise";
 import { stats } from "./stats";
+import { Color } from "./visual/color";
 
-function makebglayers(layers: BGLayer[]): HTMLImageElement[] {
-	const r = App.getCanvasRect()
+function makeNebulas(layers: BGLayer[]): Nebula[] {
+    return layers.map(l => {
+        let col = l.color;
 
-	return layers.map(layer => {
-		return noise.makeImg(r.width, r.height, layer.color, layer.sf)
-	})
+        return {
+            img: noise.makeImg(16, 16, l.color, l.sf, 1),
+            color: col,
+        }
+    })
 }
 
-function drawBgLayers(layers: HTMLImageElement[]) {
-	const { ctx } = App.get()
+type Nebula = {
+    color: Color,
+    img: HTMLImageElement,
+}
 
-	for (const l of layers) {
-		ctx.beginPath()
-		ctx.drawImage(l, 0, 0)
-		ctx.closePath()
-	}
+function drawNebulas(nebulas: Nebula[], width: number, height: number) {
+    const { ctx } = App.get()
+
+
+    for (const n of nebulas) {
+        ctx.drawImage(n.img, 0, 0, width, height)
+    }
+
 
 }
 
 function reset() {
-	ecs.clear();
-	stats.clear();
+    ecs.clear();
+    stats.clear();
 }
 
 let timer: NodeJS.Timeout | null = null
-let bg: HTMLImageElement[] = []
 
 export function runSim(config: SimConfig) {
-	if (timer) clearInterval(timer)
+    if (timer) clearInterval(timer)
 
-	App.setup(config.canvasId)
+    App.setup(config.canvasId)
 
-	reset()
+    reset()
 
-	bg = makebglayers(config.background.layers)
+    const nebulas = makeNebulas(config.background.layers)
 
-	makeNClustersWithin(App.getCanvasRect(), config.stars.clusterCount)
-	makePlanetsWithin(App.getCanvasRect(), config.planets.clusterCount)
-	makeAsteroids(App.getCanvasRect(), config.asteroids.count)
+    makeNClustersWithin(App.getCanvasRect(), config.stars.clusterCount)
+    makePlanetsWithin(App.getCanvasRect(), config.planets.clusterCount)
+    makeAsteroids(App.getCanvasRect(), config.asteroids.count)
 
-	timer = setInterval(() => {
-		App.syncCanvas()
-		App.syncDeltaTime()
+    timer = setInterval(() => {
+        App.syncCanvas()
+        App.syncDeltaTime()
 
-		drawBgLayers(bg)
-		systems.run()
-	}, 16)
+        const rect = App.getCanvasRect()
+
+        drawNebulas(nebulas, rect.width, rect.height)
+        systems.run()
+    }, 16)
 }
