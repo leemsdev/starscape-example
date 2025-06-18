@@ -99,8 +99,6 @@ export function makeNClustersWithin(area: Rect, n: number) {
 
     const remainder = n % 5;
 
-    let numCreated = 0;
-
     for (let i = 0; i < n; i += 5) {
         const c1 = rect.randomRectInside(area)
         const c2 = rect.randomRectInside(area)
