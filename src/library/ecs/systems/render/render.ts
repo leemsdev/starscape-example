@@ -5,14 +5,10 @@ import { Rect } from "../../../physics/rect";
 import { vec2 } from "../../../physics/vector";
 import { color } from "../../../visual/color";
 
-const noiseMap = new Image()
-noiseMap.src = "img/noisemaps/noise_map_5.png"
-
 const shadowMap = new Image()
 shadowMap.src = "img/noisemaps/shadowmap.png"
 
 const drawBounds = false
-
 
 function drawNoiseMap(img: HTMLImageElement, ctx: CanvasRenderingContext2D, r: Rect) {
 	ctx.clip()
@@ -25,7 +21,6 @@ function drawNoiseMap(img: HTMLImageElement, ctx: CanvasRenderingContext2D, r: R
 	ctx.globalAlpha = 1
 	ctx.closePath()
 	ctx.restore()
-
 }
 
 export function run(entity: Entity) {
@@ -56,9 +51,7 @@ export function run(entity: Entity) {
 		sprite.size,
 	)
 
-	// draw sprite
 	ctx.beginPath()
-
 
 	// draw to each point
 	for (let i = 0; i < sprite.points.length; i++) {
