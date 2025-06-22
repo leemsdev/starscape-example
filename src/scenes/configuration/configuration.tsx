@@ -19,6 +19,7 @@ export default function Configuration() {
 			<div style={{ display: 'flex', flex: 1, flexDirection: 'column', gap: '24px', padding: 16 }}>
 				<h1 style={{ margin: 0, marginBottom: 12, color: 'rgba(200, 200, 200, 1.0)' }}>Starscape</h1>
 				<span>Press space key to regenerate</span>
+				<a target="_blank" rel="noopener noreferrer" href="https://github.com/leemsdev/twinkling-stars">Check out the code and instructions</a>
 				<br />
 				<BasicControls />
 				<BackgroundControls />
