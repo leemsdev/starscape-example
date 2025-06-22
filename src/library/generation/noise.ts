@@ -20,7 +20,6 @@ function makeImg(w: number, h: number, col: Color, sf: number = 0.001, step: num
 
 	if (!ctx) throw new Error("Couldn't create temp canvas to gen noise")
 
-	// optional: clear canvas to transparent
 	ctx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
 
 	const ba = math.rndf(0.2, 0.3)
@@ -28,7 +27,6 @@ function makeImg(w: number, h: number, col: Color, sf: number = 0.001, step: num
 	for (let x = 0; x < w; x += step) {
 		for (let y = 0; y < h; y += step) {
 			const n = fnoise(x * sf, y * sf)
-			//const n = fbm((x + math.rndf(-step, step)) * sf, (y + math.rndf(-step, step)) * sf, fnoise, 4, 0.6)
 
 			const ca = color.multiply(col, ba)
 			ca.a *= Math.pow(n, 2)
